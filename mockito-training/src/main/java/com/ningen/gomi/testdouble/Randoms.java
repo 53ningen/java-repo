@@ -1,8 +1,12 @@
 package com.ningen.gomi.testdouble;
 
+import com.google.inject.Inject;
+
 import java.util.List;
 
 public class Randoms {
+
+    @Inject
     RandomNumberGenerator randomNumberGenerator = new RandomNumberGeneratorImpl();
 
     public <T> T choice(List<T> options) {

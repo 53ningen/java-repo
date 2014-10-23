@@ -2,6 +2,7 @@ package com.ningen.gomi.testdouble;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -19,7 +20,13 @@ public class RandomsMockitoTest {
     private List<String> ops;
 
     @Mock
-    private RandomNumberGenerator randomNumberGenerator;
+    private RandomNumberGenerator gen;
+
+    @Mock
+    private RandomNumberGenerator randomNumbergenerator = spy(new RandomNumberGeneratorImpl());
+
+    @InjectMocks
+    private Randoms randoms;
 
     @Before
     public void initMocks() {
@@ -66,10 +73,25 @@ public class RandomsMockitoTest {
         when(ops.get(0)).thenReturn("a");
         when(ops.get(1)).thenReturn("b");
         when(ops.size()).thenReturn(2);
-        when(randomNumberGenerator.nextInt()).thenReturn(0);
+        when(gen.nextInt()).thenReturn(0);
 
         Randoms sut = new Randoms();
-        sut.randomNumberGenerator = randomNumberGenerator;
+        sut.randomNumberGenerator = gen;
+
+        assertThat(sut.choice(ops), is("a"));
+
+    }
+
+    @Test
+    public void choiceでAを返すMockitoを用いたテストwithInjectMocksアノテーション() throws Exception {
+
+        when(ops.get(0)).thenReturn("a");
+        when(ops.get(1)).thenReturn("b");
+        when(ops.size()).thenReturn(2);
+        when(randomNumbergenerator.nextInt()).thenReturn(0);
+
+        Randoms sut = new Randoms();
+        sut.randomNumberGenerator = randomNumbergenerator;
 
         assertThat(sut.choice(ops), is("a"));
 
