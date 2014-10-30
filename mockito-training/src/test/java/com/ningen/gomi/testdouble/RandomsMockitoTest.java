@@ -42,6 +42,8 @@ public class RandomsMockitoTest {
         options.add("b");
         Randoms sut = new Randoms();
 
+        new IllegalAccessException();
+
         RandomNumberGenerator generator = Mockito.mock(RandomNumberGenerator.class);
         when(generator.nextInt()).thenReturn(0);
         sut.randomNumberGenerator = generator;

@@ -2,9 +2,16 @@ package com.ningen.gomi.googleguice;
 
 import com.google.inject.ImplementedBy;
 
+/**
+ * hoge.
+ */
 @ImplementedBy(NumberGeneratorImpl.class)
 public interface NumberGenerator {
 
-    public int nextInt();
+    /**
+     * hoge.
+     * @return hoge
+     */
+    int nextInt();
 
 }

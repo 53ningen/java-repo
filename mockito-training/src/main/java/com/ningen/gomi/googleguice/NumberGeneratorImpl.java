@@ -3,7 +3,7 @@ package com.ningen.gomi.googleguice;
 public class NumberGeneratorImpl implements NumberGenerator {
 
     @Override
-    public int nextInt() {
+    public final int nextInt() {
         return 1;
     }
 
