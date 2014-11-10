@@ -2,9 +2,14 @@ package com.ningen.gomi.googleguice;
 
 public class NumberGeneratorImpl implements NumberGenerator {
 
+    public String hoge;
+
     @Override
     public final int nextInt() {
-        return 1;
+        Integer nextInt = null;
+        nextInt = 1;
+
+        return nextInt;
     }
 
 }
