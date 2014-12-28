@@ -19,7 +19,7 @@ class Kan {
         this.cv = cv;
     }
     public boolean isIdle() {
-        return !this.name.equals("那珂");
+        return this.name.equals("那珂");
     }
 
 
@@ -73,7 +73,7 @@ public class KanColleTest {
     }
 
     @Test
-    public void 艦隊に鈴谷を含むテスト() {
+    public void 艦隊に鈴谷を含むかテスト() {
         boolean hasSuzuya = kantaiCollection.stream().anyMatch(kan ->
                 kan.name.equals("鈴谷")
         );
@@ -81,9 +81,9 @@ public class KanColleTest {
     }
 
     @Test
-    public void 艦隊に那珂ちゃんが含まれるのでアイドルじゃなくなる() {
-        boolean isIdle = kantaiCollection.stream().allMatch(Kan::isIdle);
-        assertThat(isIdle, is(false));
+    public void 艦隊に那珂ちゃんが含まれるとアイドルになる() {
+        boolean isIdle = kantaiCollection.stream().anyMatch(Kan::isIdle);
+        assertThat(isIdle, is(true));
     }
 
     @Test
